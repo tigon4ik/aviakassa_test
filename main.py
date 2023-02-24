@@ -11,13 +11,6 @@ from hotel_converter.models import HotelSearchResult, Hotel, HotelFacility, Hote
 #
 class HotelConverter:
     def convert(self, data: dict) -> HotelSearchResult:
-        # result = map(HotelConverter.reformHotelName, data.pop('hotels'))
-        # result = map(HotelConverter.reformHotelCurrency, result)
-        # result = map(HotelConverter.reformHotelMinPrice, result)
-        # result = map(HotelConverter.reformFacilities, result)
-        # data["data"] = list(result)
-        # return HotelSearchResult.parse_obj(data)
-
         return HotelSearchResult(
             total=data.get('total'),
             page=data.get('offset'),
