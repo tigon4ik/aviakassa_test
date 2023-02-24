@@ -111,32 +111,6 @@ class HotelConverter:
     def checkLuggageStorage(data: str) -> bool:
         return bool(re.match(r"хранени[ея]\sбагажа", data))
 
-    # @staticmethod
-    # def reformHotelName(data: dict) -> dict:
-    #     data["hotel_name"] = data.pop("name")
-    #     return data
-    #
-    # @staticmethod
-    # def reformFacilities(data: dict) -> dict:
-    #     result = map(HotelConverter.reformFacilitiesCategory, data.pop("facilities"))
-    #     data["facilities"] = list(result)
-    #     return data
-    #
-    # @staticmethod
-    # def reformFacilitiesCategory(data: dict) -> dict:
-    #     data["category"] = "other"
-    #     return data
-    #
-    # @staticmethod
-    # def reformHotelMinPrice(data: dict) -> dict:
-    #     data["min_price_per_night"] = data.pop("min_price")
-    #     return data
-    #
-    # @staticmethod
-    # def reformHotelCurrency(data: dict) -> dict:
-    #     data["currency"] = next(iter(data['price_details']))
-    #     return data
-
 
 def main():
     converter = HotelConverter()
