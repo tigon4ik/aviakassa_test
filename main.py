@@ -141,9 +141,7 @@ class HotelConverter:
 def main():
     converter = HotelConverter()
     result = hotel_api.get_hotels()
-    res = converter.convert(result)
-    print(res.dict())
-    return res
+    return converter.convert(result)
 
 
 if __name__ == '__main__':
