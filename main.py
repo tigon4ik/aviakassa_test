@@ -13,7 +13,8 @@ from hotel_converter.models import (
 
 
 # Вопросы
-# 1) Фото представлены как список, а класс принимает только одну строку. Какой из урлов присваивать? Первый?
+# 1) Фото представлены как список, а класс принимает только одну строку.
+#   Какой из урлов присваивать? Первый?
 # 2)
 #
 class HotelComparator:
@@ -49,10 +50,7 @@ class HotelConverter:
             location=self.convertLocation(hotel),
             is_recommended=hotel.get('is_provider_contract'),
             facilities=self.convertFacilities(hotel.get("facilities")),
-            image_url=next(
-                iter(map(lambda photo: photo.get('url'), hotel.get('photos'))),
-                None
-            ),
+            image_url=next(iter(map(lambda photo: photo.get('url'), hotel.get('photos'))), None),
             currency=next(iter(hotel.get("price_details")), None),
             description=hotel.get('description'),
             min_price_per_night=hotel.get('min_price')
@@ -67,30 +65,14 @@ class HotelConverter:
         facilityNames = map(lambda facility: facility.name, facilities)
         facilityNames = map(lambda name: name.lower(), facilityNames)
         return ShortHotelFacilities(
-            wifi=any(map(
-                HotelConverter.checkWiFi,
-                facilityNames)),
-            breakfast=any(map(
-                HotelConverter.checkBreakfast,
-                facilityNames)),
-            parking=any(map(
-                HotelConverter.checkParking,
-                facilityNames)),
-            registration_24=any(map(
-                HotelConverter.checkRegistration,
-                facilityNames)),
-            gym=any(map(
-                HotelConverter.checkGym,
-                facilityNames)),
-            safe=any(map(
-                HotelConverter.checkSafe,
-                facilityNames)),
-            conditioning=any(map(
-                HotelConverter.checkConditioning,
-                facilityNames)),
-            luggage_storage=any(map(
-                HotelConverter.checkLuggageStorage,
-                facilityNames))
+            wifi=any(map(HotelConverter.checkWiFi, facilityNames)),
+            breakfast=any(map(HotelConverter.checkBreakfast, facilityNames)),
+            parking=any(map(HotelConverter.checkParking, facilityNames)),
+            registration_24=any(map(HotelConverter.checkRegistration, facilityNames)),
+            gym=any(map(HotelConverter.checkGym, facilityNames)),
+            safe=any(map(HotelConverter.checkSafe, facilityNames)),
+            conditioning=any(map(HotelConverter.checkConditioning, facilityNames)),
+            luggage_storage=any(map(HotelConverter.checkLuggageStorage, facilityNames))
         )
 
     def convertLocation(self, hotel) -> HotelLocation:
@@ -101,15 +83,12 @@ class HotelConverter:
 
     def convertFacilities(self, facilities: list) -> list[HotelFacility]:
         convertedSubFacilities = map(self.convertSubFacilities, facilities)
-        return [facility
-                for subFacilities in convertedSubFacilities
-                for facility in subFacilities]
+        return [facility for subFacilities in convertedSubFacilities for facility in subFacilities]
 
     def convertSubFacilities(self, facilities: dict) -> list[HotelFacility]:
-        return list(map(lambda facility: HotelFacility(
-            name=facility,
-            category=facilities.get('name')
-        ), facilities.get('list')))
+        return list(map(
+            lambda facility: HotelFacility(name=facility, category=facilities.get('name')),
+            facilities.get('list')))
 
     @staticmethod
     def generateLoc(data: dict, objectType: str) -> Loc:
