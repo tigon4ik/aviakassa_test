@@ -17,9 +17,8 @@ from main import main
 class TestHotelConverter(unittest.TestCase):
     defaultHotelSearchResult = None
 
-    @classmethod
-    def setUpClass(cls) -> None:
-        cls.defaultHotelSearchResult = TestHotelConverter.createHotelSearchResult()
+    def setUp(self) -> None:
+        self.defaultHotelSearchResult = TestHotelConverter.createHotelSearchResult()
 
     # Кейс с минимальным заполнением данных
     def testConvertCase0(self):
