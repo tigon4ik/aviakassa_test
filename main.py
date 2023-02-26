@@ -58,7 +58,7 @@ class HotelConverter:
             facilities: list[HotelFacility]
     ) -> ShortHotelFacilities:
         facilityNames = map(lambda facility: facility.name, facilities)
-        facilityNames = map(lambda name: name.lower(), facilityNames)
+        facilityNames = list(map(lambda name: name.lower(), facilityNames))
         return ShortHotelFacilities(
             wifi=any(map(HotelConverter.checkWiFi, facilityNames)),
             breakfast=any(map(HotelConverter.checkBreakfast, facilityNames)),
@@ -94,35 +94,35 @@ class HotelConverter:
 
     @staticmethod
     def checkWiFi(data: str) -> bool:
-        return bool(re.match(r"\bwi-?fi\b", data))
+        return bool(re.search(r"\bwi-?fi\b", data))
 
     @staticmethod
     def checkBreakfast(data: str) -> bool:
-        return bool(re.match(r"\bзавтрак\b", data))
+        return bool(re.search(r"\bзавтрак\b", data))
 
     @staticmethod
     def checkParking(data: str) -> bool:
-        return bool(re.match(r"\bпарковка\b", data))
+        return bool(re.search(r"\bпарковка\b", data))
 
     @staticmethod
     def checkRegistration(data: str) -> bool:
-        return bool(re.match(r"\bкруглосуточная\b", data))
+        return bool(re.search(r"\bкруглосуточная\b", data))
 
     @staticmethod
     def checkGym(data: str) -> bool:
-        return bool(re.match(r"\bтренажерный\b", data))
+        return bool(re.search(r"\bтренажерный\b", data))
 
     @staticmethod
     def checkSafe(data: str) -> bool:
-        return bool(re.match(r"\bсейф\b", data))
+        return bool(re.search(r"\bсейф\b", data))
 
     @staticmethod
     def checkConditioning(data: str) -> bool:
-        return bool(re.match(r"\bкондиционер\b", data))
+        return bool(re.search(r"\bкондиционер\b", data))
 
     @staticmethod
     def checkLuggageStorage(data: str) -> bool:
-        return bool(re.match(r"хранени[ея]\sбагажа", data))
+        return bool(re.search(r"\bхранени[ея]\b\s\bбагажа\b", data))
 
 
 def main():
