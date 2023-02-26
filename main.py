@@ -73,8 +73,8 @@ class HotelConverter:
 
     def convertLocation(self, hotel) -> HotelLocation:
         return HotelLocation(
-            city=HotelConverter.generateLoc(hotel, 'city'),
-            country=HotelConverter.generateLoc(hotel, 'country')
+            city=self.convertLoc(hotel, 'city'),
+            country=self.convertLoc(hotel, 'country')
         )
 
     def convertFacilities(self, facilities: list) -> list[HotelFacility]:
@@ -86,8 +86,7 @@ class HotelConverter:
             lambda facility: HotelFacility(name=facility, category=facilities.get('name')),
             facilities.get('list')))
 
-    @staticmethod
-    def generateLoc(data: dict, objectType: str) -> Loc:
+    def convertLoc(self, data: dict, objectType: str) -> Loc:
         return Loc(
             type=ObjectType[objectType],
             name=data.get(objectType)
