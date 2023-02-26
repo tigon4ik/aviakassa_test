@@ -17,10 +17,10 @@ class HotelComparator:
     def compare(data: Hotel) -> tuple:
         return (
             data.is_recommended,
-            data.image_url is None,
-            data.min_price_per_night,
+            data.image_url is not None,
+            -data.min_price_per_night,
             data.stars,
-            bool(data.facilities)
+            not bool(data.facilities)
         )
 
 
