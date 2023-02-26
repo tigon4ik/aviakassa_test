@@ -12,11 +12,6 @@ from hotel_converter.models import (
 )
 
 
-# Вопросы
-# 1) Фото представлены как список, а класс принимает только одну строку.
-#   Какой из урлов присваивать? Первый?
-# 2)
-#
 class HotelComparator:
     @staticmethod
     def compare(data: Hotel) -> tuple:
