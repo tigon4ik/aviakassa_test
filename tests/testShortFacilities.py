@@ -1,17 +1,13 @@
 import unittest
 from unittest.mock import Mock
 
-from hotel_converter.models import (
-    HotelSearchResult,
-    Hotel,
-    HotelLocation,
-    Loc,
-    ObjectType,
-    ShortHotelFacilities,
-    HotelFacility
+from dataCases import (
+    TEST_HOTEL_RESULTS_RESPONSE_CASE_0,
+    TEST_HOTEL_RESULTS_RESPONSE_CASE_1,
+    TEST_HOTEL_RESULTS_RESPONSE_CASE_4
 )
 from hotel_converter.api import hotel_api
-from dataCases import *
+from hotel_converter.models import ShortHotelFacilities
 from main import main
 
 

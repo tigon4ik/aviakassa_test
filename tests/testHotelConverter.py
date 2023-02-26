@@ -11,7 +11,12 @@ from hotel_converter.models import (
     HotelFacility
 )
 from hotel_converter.api import hotel_api
-from dataCases import *
+from dataCases import (
+    TEST_HOTEL_RESULTS_RESPONSE_CASE_0,
+    TEST_HOTEL_RESULTS_RESPONSE_CASE_1,
+    TEST_HOTEL_RESULTS_RESPONSE_CASE_2,
+    TEST_HOTEL_RESULTS_RESPONSE_CASE_3
+)
 from main import main
 
 

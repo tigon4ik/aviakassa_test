@@ -1,5 +1,3 @@
-import re
-
 from hotel_converter.api import hotel_api
 from hotel_converter.models import (
     HotelSearchResult,

@@ -179,7 +179,7 @@ TEST_HOTEL_RESULTS_RESPONSE_CASE_2 = {
             'stars': 5,
             'is_provider_contract': False,
         },
-{
+        {
             'id': '1',
             'name': 'myHotel',
             'phone': None,
