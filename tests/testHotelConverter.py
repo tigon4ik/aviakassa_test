@@ -56,6 +56,13 @@ class TestHotelConverter(unittest.TestCase):
         result = main()
         self.assertEqual(result, self.defaultHotelSearchResult)
 
+    # Кейс без отелей
+    def testConvertCase4(self):
+        self.defaultHotelSearchResult.data = []
+        hotel_api.get_hotels = Mock(return_value=TEST_HOTEL_RESULTS_RESPONSE_CASE_3)
+        result = main()
+        self.assertEqual(result, self.defaultHotelSearchResult)
+
     @staticmethod
     def createHotelSearchResult() -> HotelSearchResult:
         return HotelSearchResult(
